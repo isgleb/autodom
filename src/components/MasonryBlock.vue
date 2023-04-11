@@ -1,7 +1,7 @@
 <template>
   <div class="grid-wrapper">
-    <div v-for="image in images" :class="image.class" :key="image.image.src">
-      <img :src="image.image.src" />
+    <div v-for="img in images" :class="img.class" :key="img.image.src">
+      <img :src="img.image.src" alt="" />
     </div>
   </div>
 </template>
@@ -48,13 +48,11 @@ onMounted(() => {
   props.imagesSrc.forEach((src: string) => {
     let newImg = new ImageFormat(src);
     images.value.push(newImg);
-    // console.log(newImg);
   });
-  console.log(images);
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 * {
   margin: 0;
   padding: 0;
@@ -77,22 +75,21 @@ img {
   justify-content: center;
   align-items: center;
 }
+
 .grid-wrapper > div > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 5px;
 }
 
 .grid-wrapper {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-auto-rows: 200px;
   grid-auto-flow: dense;
 }
 .grid-wrapper .wide {
-  grid-column: span 2;
+  grid-column: span 1;
 }
 .grid-wrapper .tall {
   grid-row: span 2;

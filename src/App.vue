@@ -1,12 +1,11 @@
 <template>
-  <HelloWorld :imagesSrc="imageSrc1" style="max-width: 80%" />
+  <HelloWorld :imagesSrc="imageSrc1" style="max-width: 100%" />
   <HelloWorld :imagesSrc="imageSrc2" style="max-width: 80%" />
 </template>
 <script setup lang="ts">
-import HelloWorld from "@/components/HelloWorld.vue";
+import HelloWorld from "@/components/MasonryBlock.vue";
 
 const imageSrc1 = [
-  "https://previews.123rf.com/images/rglinsky/rglinsky1201/rglinsky120100188/12336990-vertical-oriented-image-of-famous-eiffel-tower-in-paris-france.jpg",
   "https://cdn.ascgroup.ru/news_media/13099/ACH02568.jpg",
   "https://cdn.ascgroup.ru/news_media/13099/ACH02578.jpg",
   "https://cdn.ascgroup.ru/news_media/13099/ACH02602.jpg",
@@ -40,6 +39,7 @@ const imageSrc1 = [
   "https://cdn.ascgroup.ru/news_media/13099/ACH03910.jpg",
   "https://cdn.ascgroup.ru/news_media/13099/ACH04011.jpg",
 ];
+
 const imageSrc2 = [
   "https://images.unsplash.com/photo-1541845157-a6d2d100c931?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80",
   "https://images.unsplash.com/photo-1588282322673-c31965a75c3e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1351&amp;q=80",

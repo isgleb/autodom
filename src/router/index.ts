@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import HelloWorld from "../components/HelloWorld.vue";
+import MasonryBlock from "../components/MasonryBlock.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    component: HelloWorld,
+    component: MasonryBlock,
   },
 ];
 
