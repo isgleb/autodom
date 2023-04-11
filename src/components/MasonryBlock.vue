@@ -9,14 +9,14 @@
 <script setup lang="ts">
 import { onMounted, PropType, Ref, ref, defineProps } from "vue";
 
-enum ImageCssClass {
+enum BrickCssClass {
   tall = "tall",
   wide = "wide",
   square = "square",
 }
-
-class ImageFormatN extends Image {
-  cssClass: ImageCssClass;
+// masonry walls are made of bricks
+class ImageBrick extends Image {
+  cssClass: BrickCssClass;
 
   constructor(src: string) {
     super();
@@ -26,13 +26,13 @@ class ImageFormatN extends Image {
 
     switch (true) {
       case ratio <= imageAspectRatio:
-        this.cssClass = ImageCssClass.wide;
+        this.cssClass = BrickCssClass.wide;
         break;
       case ratio <= 1 / imageAspectRatio:
-        this.cssClass = ImageCssClass.tall;
+        this.cssClass = BrickCssClass.tall;
         break;
       default:
-        this.cssClass = ImageCssClass.square;
+        this.cssClass = BrickCssClass.square;
         break;
     }
   }
@@ -42,11 +42,11 @@ const props = defineProps({
   imagesSrc: { required: true, type: Array as PropType<string[]> },
 });
 
-const images: Ref<ImageFormatN[]> = ref([]);
+const images: Ref<ImageBrick[]> = ref([]);
 
 onMounted(() => {
   props.imagesSrc.forEach((src: string) => {
-    let newImg = new ImageFormatN(src);
+    let newImg = new ImageBrick(src);
     images.value.push(newImg);
   });
 });
