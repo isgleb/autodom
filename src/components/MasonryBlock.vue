@@ -1,7 +1,7 @@
 <template>
   <div class="grid-wrapper">
-    <div v-for="img in images" :class="img.class" :key="img.image.src">
-      <img :src="img.image.src" alt="" />
+    <div v-for="img in images" :class="img.cssClass" :key="img.src">
+      <img :src="img.src" alt="" />
     </div>
   </div>
 </template>
@@ -9,30 +9,30 @@
 <script setup lang="ts">
 import { onMounted, PropType, Ref, ref, defineProps } from "vue";
 
-enum ImageClass {
+enum ImageCssClass {
   tall = "tall",
   wide = "wide",
   square = "square",
 }
 
-class ImageFormat {
-  class?: ImageClass;
-  image: HTMLImageElement;
+class ImageFormatN extends Image {
+  cssClass: ImageCssClass;
 
   constructor(src: string) {
-    this.image = new Image();
-    this.image.src = src;
+    super();
+    this.src = src;
     const ratio = 1.4;
+    const imageAspectRatio = this.naturalWidth / this.naturalHeight;
 
     switch (true) {
-      case ratio <= this.image.naturalWidth / this.image.naturalHeight:
-        this.class = ImageClass.wide;
+      case ratio <= imageAspectRatio:
+        this.cssClass = ImageCssClass.wide;
         break;
-      case ratio <= this.image.naturalHeight / this.image.naturalWidth:
-        this.class = ImageClass.tall;
+      case ratio <= 1 / imageAspectRatio:
+        this.cssClass = ImageCssClass.tall;
         break;
       default:
-        this.class = ImageClass.square;
+        this.cssClass = ImageCssClass.square;
         break;
     }
   }
@@ -42,13 +42,11 @@ const props = defineProps({
   imagesSrc: { required: true, type: Array as PropType<string[]> },
 });
 
-const images: Ref<ImageFormat[]> = ref([]);
+const images: Ref<ImageFormatN[]> = ref([]);
 
 onMounted(() => {
-  console.log(props.imagesSrc);
-
   props.imagesSrc.forEach((src: string) => {
-    let newImg = new ImageFormat(src);
+    let newImg = new ImageFormatN(src);
     images.value.push(newImg);
   });
 });
