@@ -12,7 +12,7 @@ import { onMounted, PropType, Ref, ref, defineProps } from "vue";
 enum ImageClass {
   tall = "tall",
   wide = "wide",
-  square = "",
+  square = "square",
 }
 
 class ImageFormat {
@@ -23,10 +23,10 @@ class ImageFormat {
     this.image = new Image();
     this.image.src = src;
     switch (true) {
-      case this.image.naturalWidth > this.image.naturalHeight:
+      case this.image.naturalWidth / this.image.naturalHeight > 1.2:
         this.class = ImageClass.wide;
         break;
-      case this.image.naturalWidth < this.image.naturalHeight:
+      case this.image.naturalHeight / this.image.naturalWidth > 1.2:
         this.class = ImageClass.tall;
         break;
       default:
@@ -86,6 +86,7 @@ img {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: 200px;
   grid-auto-flow: dense;
 }
 .grid-wrapper .wide {
@@ -94,7 +95,7 @@ img {
 .grid-wrapper .tall {
   grid-row: span 2;
 }
-.grid-wrapper .big {
+.grid-wrapper .square {
   grid-column: span 2;
   grid-row: span 2;
 }

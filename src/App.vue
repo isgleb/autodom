@@ -1,6 +1,8 @@
 <template>
-  <HelloWorld :imagesSrc="imageSrc1" style="max-width: 100%" />
-  <HelloWorld :imagesSrc="imageSrc2" style="max-width: 80%" />
+  <div style="width: 80%; margin: auto">
+    <HelloWorld :imagesSrc="imageSrc1" style="max-width: 100%" />
+    <HelloWorld :imagesSrc="imageSrc2" style="max-width: 80%" />
+  </div>
 </template>
 <script setup lang="ts">
 import HelloWorld from "@/components/MasonryBlock.vue";
