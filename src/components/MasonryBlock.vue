@@ -22,11 +22,13 @@ class ImageFormat {
   constructor(src: string) {
     this.image = new Image();
     this.image.src = src;
+    const ratio = 1.4;
+
     switch (true) {
-      case this.image.naturalWidth / this.image.naturalHeight > 1.2:
+      case ratio <= this.image.naturalWidth / this.image.naturalHeight:
         this.class = ImageClass.wide;
         break;
-      case this.image.naturalHeight / this.image.naturalWidth > 1.2:
+      case ratio <= this.image.naturalHeight / this.image.naturalWidth:
         this.class = ImageClass.tall;
         break;
       default:
@@ -86,17 +88,17 @@ img {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-auto-rows: 200px;
+  grid-auto-rows: 400px;
   grid-auto-flow: dense;
 }
 .grid-wrapper .wide {
-  grid-column: span 1;
+  grid-column: span 2;
 }
 .grid-wrapper .tall {
   grid-row: span 2;
 }
 .grid-wrapper .square {
-  grid-column: span 2;
-  grid-row: span 2;
+  grid-column: span 1;
+  grid-row: span 1;
 }
 </style>
