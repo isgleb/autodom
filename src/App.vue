@@ -1,11 +1,6 @@
 <template>
   <div class="wrapper">
-    <HelloWorld
-      :imagesSrc="autoDomImages"
-      style="max-width: 80%"
-      class="masonry-block"
-    />
-    <HelloWorld
+    <MasonryBlock
       :imagesSrc="randomImages"
       style="max-width: 80%"
       class="masonry-block"
@@ -13,42 +8,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import HelloWorld from "@/components/MasonryBlock.vue";
-
-const autoDomImages = [
-  "https://cdn.ascgroup.ru/news_media/13099/ACH02568.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH02578.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH02602.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH02671.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH02674.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH02715.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH02759.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH02838.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH02907.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH02923.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH02948.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03008.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03020.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03048.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03061.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03096.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03170.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03186.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03211.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03271.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03306.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03451.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03471.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03559.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03567.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03579.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03707.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03754.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03777.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03813.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH03910.jpg",
-  "https://cdn.ascgroup.ru/news_media/13099/ACH04011.jpg",
-];
+import MasonryBlock from "@/components/MasonryBlock.vue";
 
 const imageSrc = [
   "https://previews.123rf.com/images/rglinsky/rglinsky1201/rglinsky120100188/12336990-vertical-oriented-image-of-famous-eiffel-tower-in-paris-france.jpg",
@@ -91,17 +51,4 @@ for (let i = 0; i < 30; i++) {
 .masonry-block {
   margin-top: 20px;
 }
-
-//nav {
-//  padding: 30px;
-//
-//  a {
-//    font-weight: bold;
-//    color: #2c3e50;
-//
-//    &.router-link-exact-active {
-//      color: #42b983;
-//    }
-//  }
-//}
 </style>
