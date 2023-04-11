@@ -7,12 +7,12 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, PropType, Ref, ref, defineProps } from "vue";
 
 enum ImageClass {
-  tall = 0,
-  wide = 1,
-  square = 2,
+  tall = "tall",
+  wide = "wide",
+  square = "",
 }
 
 class ImageFormat {
@@ -36,47 +36,16 @@ class ImageFormat {
   }
 }
 
-const images = ref([]);
+const props = defineProps({
+  imagesSrc: { required: true, type: Array as PropType<string[]> },
+});
+
+const images: Ref<ImageFormat[]> = ref([]);
 
 onMounted(() => {
-  console.log("fdsdf");
-  const imagesSrc = [
-    "https://previews.123rf.com/images/rglinsky/rglinsky1201/rglinsky120100188/12336990-vertical-oriented-image-of-famous-eiffel-tower-in-paris-france.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH02568.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH02578.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH02602.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH02671.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH02674.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH02715.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH02759.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH02838.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH02907.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH02923.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH02948.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03008.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03020.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03048.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03061.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03096.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03170.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03186.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03211.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03271.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03306.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03451.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03471.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03559.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03567.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03579.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03707.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03754.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03777.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03813.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH03910.jpg",
-    "https://cdn.ascgroup.ru/news_media/13099/ACH04011.jpg",
-  ];
+  console.log(props.imagesSrc);
 
-  imagesSrc.forEach((src) => {
+  props.imagesSrc.forEach((src: string) => {
     let newImg = new ImageFormat(src);
     images.value.push(newImg);
     // console.log(newImg);
@@ -86,24 +55,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/*.wrapper {*/
-/*  display: flex;*/
-/*  flex-wrap: wrap;*/
-/*  gap: 10px;*/
-/*  margin: 200px*/
-/*}*/
-
-/*img{*/
-/*  width:100%;*/
-/*  display: block;*/
-/*  height: auto;*/
-/*}*/
-
-/*.figure {*/
-/*  flex: 1 1 30%;*/
-/*  margin: 0;*/
-/*}*/
-
 * {
   margin: 0;
   padding: 0;
@@ -121,7 +72,6 @@ img {
   display: inline-block;
 }
 
-/* Main CSS */
 .grid-wrapper > div {
   display: flex;
   justify-content: center;
