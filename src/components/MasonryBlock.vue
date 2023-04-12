@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, PropType, Ref, ref, defineProps } from "vue";
+import { PropType, Ref, ref, defineProps } from "vue";
 
 enum BrickCssClass {
   tall = "tall",
