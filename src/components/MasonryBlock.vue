@@ -84,7 +84,7 @@ img {
 .grid-wrapper {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  grid-template-columns: repeat(3, 3fr);
   grid-auto-rows: 30vh;
   grid-auto-flow: dense;
   margin: auto;
