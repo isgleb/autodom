@@ -85,8 +85,8 @@ img {
 .grid-wrapper {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-auto-rows: 400px;
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  grid-auto-rows: 250px;
   grid-auto-flow: dense;
 }
 .grid-wrapper .wide {
