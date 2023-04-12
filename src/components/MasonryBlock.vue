@@ -16,25 +16,10 @@ enum BrickCssClass {
 }
 // masonry walls are made of bricks
 class ImageBrick extends Image {
-  cssClass: BrickCssClass;
-
+  cssClass?: BrickCssClass;
   constructor(src: string) {
     super();
     this.src = src;
-    const ratio = 1.4;
-    const imageAspectRatio = this.naturalWidth / this.naturalHeight;
-
-    switch (true) {
-      case ratio <= imageAspectRatio:
-        this.cssClass = BrickCssClass.wide;
-        break;
-      case ratio <= 1 / imageAspectRatio:
-        this.cssClass = BrickCssClass.tall;
-        break;
-      default:
-        this.cssClass = BrickCssClass.square;
-        break;
-    }
   }
 }
 
@@ -44,11 +29,25 @@ const props = defineProps({
 
 const images: Ref<ImageBrick[]> = ref([]);
 
-onMounted(() => {
-  props.imagesSrc.forEach((src: string) => {
-    let newImg = new ImageBrick(src);
+props.imagesSrc.forEach((src: string) => {
+  let newImg = new ImageBrick(src);
+  newImg.onload = () => {
+    const ratio = 1.4;
+    const imageAspectRatio = newImg.naturalWidth / newImg.naturalHeight;
+
+    switch (true) {
+      case ratio <= imageAspectRatio:
+        newImg.cssClass = BrickCssClass.wide;
+        break;
+      case ratio <= 1 / imageAspectRatio:
+        newImg.cssClass = BrickCssClass.tall;
+        break;
+      default:
+        newImg.cssClass = BrickCssClass.square;
+        break;
+    }
     images.value.push(newImg);
-  });
+  };
 });
 </script>
 
