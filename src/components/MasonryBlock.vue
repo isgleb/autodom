@@ -85,9 +85,17 @@ img {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
-  grid-auto-rows: 250px;
+  grid-auto-rows: 30vh;
   grid-auto-flow: dense;
+  margin: auto;
 }
+
+@media (max-width: 480px) {
+  .grid-wrapper {
+    grid-auto-rows: 20vh;
+  }
+}
+
 .grid-wrapper .wide {
   grid-column: span 2;
 }

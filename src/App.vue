@@ -44,7 +44,7 @@ for (let i = 0; i < 30; i++) {
 }
 
 .wrapper {
-  width: 80%;
+  //width: 80%;
   margin: auto;
 }
 
